@@ -1,4 +1,7 @@
-﻿namespace Metastasis
+﻿using System;
+using System.Diagnostics;
+
+namespace Metastasis
 {
 	abstract class EncodingJob
 	{
@@ -15,6 +18,25 @@
 			Track = track;
 		}
 
-		public abstract void Run(int trackNumber);
+		public abstract void Run();
+
+		protected void StartProcess(string path, string arguments)
+		{
+			var processStartInfo = new ProcessStartInfo
+			{
+				FileName = path,
+				Arguments = arguments,
+				CreateNoWindow = true,
+			};
+			using (var process = Process.Start(processStartInfo))
+			{
+				process.WaitForExit();
+				if (process.ExitCode != 0)
+				{
+					string message = string.Format("{0} exited with code {1}", path, process.ExitCode);
+					throw new ApplicationException(message);
+				}
+			}
+		}
 	}
 }
