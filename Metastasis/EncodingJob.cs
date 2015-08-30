@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
 
 namespace Metastasis
 {
 	abstract class EncodingJob
 	{
-		protected Configuration Configuration;
+		protected GeneralConfiguration Configuration;
 
-		protected Release Release;
+		protected ReleaseConfiguration Release;
 
-		protected Track Track;
+		protected TrackConfiguration Track;
 
-		public void Initialize(Configuration configuration, Release release, Track track)
+		public void Initialize(GeneralConfiguration configuration, ReleaseConfiguration release, TrackConfiguration track)
 		{
 			Configuration = configuration;
 			Release = release;
@@ -19,6 +20,17 @@ namespace Metastasis
 		}
 
 		public abstract void Run();
+
+		protected string GetOutputPath(string encoderOutputDirectory, string fileExtension)
+		{
+			string releaseDirectory = string.Format("{0} - {1} ({2}}", Release.Artist, Release.Release, Release.Year);
+			string outputDirectory = Path.Combine(encoderOutputDirectory, releaseDirectory);
+			if (!Directory.Exists(outputDirectory))
+				Directory.CreateDirectory(outputDirectory);
+			string outputFilename = string.Format("{0}. {1} - {2}.{3}", Track.Number, Release.Artist, Track.Name, fileExtension);
+			string outputPath = Path.Combine(outputDirectory, outputFilename);
+			return outputPath;
+		}
 
 		protected void StartProcess(string path, string arguments)
 		{

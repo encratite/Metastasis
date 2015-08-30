@@ -42,14 +42,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configuration.cs" />
+    <Compile Include="GeneralConfiguration.cs" />
     <Compile Include="Encoder.cs" />
     <Compile Include="EncodingJob.cs" />
     <Compile Include="FlacEncodingJob.cs" />
     <Compile Include="LameEncodingJob.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Release.cs" />
-    <Compile Include="Track.cs" />
+    <Compile Include="ReleaseConfiguration.cs" />
+    <Compile Include="TrackConfiguration.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Ashod\Ashod\Ashod.csproj">

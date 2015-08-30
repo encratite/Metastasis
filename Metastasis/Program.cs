@@ -16,7 +16,7 @@ namespace Metastasis
 				Console.WriteLine("Usage:");
 				Console.WriteLine("<path to release configuration file>");
 			}
-			var configuration = JsonFile.Read<Configuration>();
+			var configuration = JsonFile.Read<GeneralConfiguration>();
 			var encoder = new Encoder(configuration);
 			string releaseConfigurationPath = arguments[0];
 			encoder.Run(releaseConfigurationPath);
