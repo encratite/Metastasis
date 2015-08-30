@@ -6,7 +6,7 @@ namespace Metastasis
 	{
 		public override void Run()
 		{
-			string wavPath = Path.Combine(Release.WavPath, Track.Filename);
+			string wavPath = Path.Combine(Configuration.WavDirectory, Track.Filename);
 			string outputPath = GetOutputPath(Configuration.Mp3OutputDirectory, "mp3");
 
 			string lamePath = Path.Combine(Configuration.LameDirectory, "lame.exe");

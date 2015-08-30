@@ -23,7 +23,7 @@ namespace Metastasis
 
 		protected string GetOutputPath(string encoderOutputDirectory, string fileExtension)
 		{
-			string releaseDirectory = string.Format("{0} - {1} ({2}}", Release.Artist, Release.Release, Release.Year);
+			string releaseDirectory = string.Format("{0} - {1} ({2})", Release.Artist, Release.Release, Release.Year);
 			string outputDirectory = Path.Combine(encoderOutputDirectory, releaseDirectory);
 			if (!Directory.Exists(outputDirectory))
 				Directory.CreateDirectory(outputDirectory);

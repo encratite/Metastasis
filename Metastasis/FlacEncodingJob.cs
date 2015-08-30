@@ -6,7 +6,7 @@ namespace Metastasis
 	{
 		public override void Run()
 		{
-			string wavPath = Path.Combine(Release.WavPath, Track.Filename);
+			string wavPath = Path.Combine(Configuration.WavDirectory, Track.Filename);
 			string outputPath = GetOutputPath(Configuration.FlacOutputDirectory, "flac");
 
 			string flacPath = Path.Combine(Configuration.FlacDirectory, "flac.exe");

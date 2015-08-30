@@ -8,7 +8,6 @@ namespace Metastasis
 		public string Release { get; set; }
 		public int Year { get; set; }
 		public string Genre { get; set; }
-		public string WavPath { get; set; }
 		public List<TrackConfiguration> Tracks { get; set; }
 	}
 }
